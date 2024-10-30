@@ -56,8 +56,7 @@ class DataPreprocessor:
     def encode_features(self):
         # Encode gender, caste, branch_code, branch, and college as categorical variables
         self.data['gender'] = self.data['gender'].map({'F': 0, 'M': 1})
-        self.data['caste'] = self.data['caste'].map(
-            {'SC': 1, 'ST': 2, 'BC_A': 3, 'BC_B': 4, 'BC_C': 5, 'BC_D': 6, 'BC_E': 7, 'OC': 8})
+        self.data['caste'] = self.data['caste'].map({'SC': 1, 'ST': 2, 'BC_A': 3, 'BC_B': 4, 'BC_C': 5, 'BC_D': 6, 'BC_E': 7, 'OC': 8})
         self.data = pd.get_dummies(self.data, columns=['branch_code', 'branch'], drop_first=True)
 
         # Label encode the college_code and college
@@ -142,9 +141,9 @@ predictor = Predictor(trainer.model, X_train.columns, college_dataset)
 
 # Example input data
 user_input = {
-    'rank': 71654,
-    'gender': 'F',
-    'caste': 'BC_B',
+    'rank': 67000,
+    'gender': 'M',
+    'caste': "ST",
     'branch_code': 'CSE',
     'branch': 'COMPUTER SCIENCE AND ENGINEERING'  # Example branch
 }

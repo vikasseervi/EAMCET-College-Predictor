@@ -5,7 +5,6 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import LabelEncoder
 from joblib import dump
 from util import BRANCH, COLLEGE
 
@@ -46,6 +45,7 @@ class DataVisualizer:
         correlation = numeric_data.corr()
         plt.figure(figsize=(10, 10))
         sns.heatmap(correlation, cbar=True, square=True, fmt='.1f', annot=True, annot_kws={'size': 8}, cmap='Blues')
+        plt.show()
 
 
 class DataPreprocessor:
@@ -143,6 +143,13 @@ print(missing_values)
 preprocessor = DataPreprocessor(college_dataset)
 encoded_data = preprocessor.encode_features()
 
+# Plotting
+visualizer = DataVisualizer()
+visualizer.plot_category_distribution(college_dataset, 'branch')
+visualizer.plot_category_distribution(college_dataset, 'gender')
+visualizer.plot_feature_vs_target(college_dataset, 'rank', 'college_code')
+visualizer.plot_correlation_heatmap(encoded_data)
+
 
 # Separate features and labels, split the data
 X, Y = preprocessor.separate_features_labels('college_code', ['rank', 'gender', 'caste', 'branch_code'])
@@ -161,11 +168,18 @@ dump(trainer.model, 'model.joblib')
 predictor = Predictor(trainer.model, X_train.columns, college_dataset)
 
 # Example input data
+# user_input = {
+#     'rank': 40000,
+#     'gender': 'M',
+#     'caste': 'BC_E',
+#     'branch_code': 'CSE',
+# }
+
 user_input = {
     'rank': 71654,
     'gender': 'F',
     'caste': 'BC_B',
-    'branch_code': 'PHD',
+    'branch_code': 'CSE',
 }
 
 # Encode the input data

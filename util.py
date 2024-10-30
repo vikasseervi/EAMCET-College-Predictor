@@ -275,8 +275,98 @@ college = ['AVHP  -  AVANTHI INST OF PHARMSCI, HAYATHNAGAR',
            'JNPASF  -  JNTU SCHOOL OF PLANNING AND ARCH - SELF FINANCE, MASABTANK',
            'VGNT  -  VIGNAN INSTITUTE OF TECHNOLOGY AND SCI, DESHMUKHI']
 
+unsorted_college_codes = ['AVHP', 'AIZA', 'ANRH', 'AVIH', 'ANRK', 'ASRA', 'AURG', 'AITH', 'AKIT', 'AURH',
+                          'ANWP', 'ARJN', 'ACEG', 'BITN', 'AVNI', 'AURP', 'BIET', 'KUCESF', 'MESP', 'WESL',
+                          'GPRP', 'SBIT', 'JANG', 'SNVM', 'KHMP', 'JMTS', 'OUCT', 'DIPS', 'AARM', 'CHTS',
+                          'BNPW', 'SUUP', 'KUCE', 'VASV', 'METH', 'NAWB', 'DSOP', 'SVIT', 'TCTK', 'KMIT',
+                          'SWET', 'MJCT', 'MMTZ', 'MOTK', 'SAIS', 'CJIT', 'BOMA', 'PRIW', 'BREW', 'STLW',
+                          'CMRP', 'DCET', 'JMTK', 'VGSP', 'JNKR', 'VVKN', 'ISLC', 'MHVR', 'VITS', 'VGSE',
+                          'DRKC', 'VJYA', 'SVHU', 'OUCE', 'NGMA', 'KMTS', 'GRCP', 'BOSE', 'GNTW', 'KTKM',
+                          'JPNE', 'PLMU', 'KLRT', 'DRKI', 'MECS', 'NGIT', 'CMRG', 'MRCP', 'CHTN', 'JNTHMT',
+                          'CMRK', 'KPRT', 'HOLY', 'CMRN', 'MREW', 'PURD', 'MLRP', 'BVRW', 'GCTC', 'MRET',
+                          'CMRM', 'MGHA', 'HITM', 'SPKG', 'JNTH', 'GLND', 'MLID', 'TMLP', 'MRPC', 'SMSK',
+                          'MRIT', 'MRCW', 'GRRR', 'RITW', 'CVSR', 'MLRS', 'VSNU', 'IARE', 'TCEK', 'VMTW',
+                          'MLRD', 'MINA', 'MREM', 'CFSR', 'VPRG', 'GCPK', 'MRTN', 'VREC', 'NREC', 'BSKR',
+                          'PETW', 'VCPN', 'NRCM', 'NNRG', 'SCET', 'MTEC', 'GLOB', 'MRCE', 'BVRI', 'MREC',
+                          'JNTM', 'KITW', 'KCEA', 'VBIT', 'BPCP', 'SPEC', 'SRYS', 'MGUNSF', 'SNIS', 'MIPM',
+                          'CHET', 'NOVH', 'VJEC', 'BSGP', 'PALV', 'BRIL', 'SISG', 'GNIT', 'KGRH', 'CBIT',
+                          'JOGI', 'SCOP', 'CASR', 'BRIG', 'VCOP', 'SPHN', 'KNRR', 'INDI', 'TKRP', 'JBIT',
+                          'SWIT', 'TKEM', 'SNTI', 'SDEW', 'GURU', 'SDCP', 'SDGI', 'MNRP', 'VCET', 'LRDS',
+                          'VBEC', 'VJYH', 'INDU', 'MVSR', 'SDES', 'TKRC', 'TRRC', 'CVRH', 'JNTS', 'SIEI',
+                          'MNRT', 'SANP', 'IITT', 'KDDW', 'MGIT', 'KUCP', 'SVES', 'VMEG', 'GATE', 'JAYA',
+                          'VJIT', 'VRKW', 'KUEWSF', 'VKSP', 'SANA', 'VAGP', 'SVSE', 'SRIW', 'ELEN', 'GNPT',
+                          'CITS', 'WITS', 'KUWL', 'NIET', 'VGWL', 'VITH', 'SMED', 'TALP', 'SMCD', 'SMIC',
+                          'TPCE', 'CDTK', 'VAGE', 'SRHP', 'KITS', 'VISA', 'JNPASF', 'VGNT']
 
-BRANCH = {branch_code[i]: (i+1, branch[i]) for i in range(len(branch_code))}
+sorted_college_codes = ['VJEC', 'JNTH', 'CBIT', 'OUCE', 'MVSR', 'CVRH', 'JNTHMT', 'GPRP', 'VASV', 'IARE', 'GNTW',
+                        'OUCT', 'GRRR', 'SNIS', 'KMIT', 'MGIT', 'KUCE', 'VJIT', 'VMEG', 'JNKR', 'KITS', 'GCTC', 'CMRK',
+                        'SVIT', 'JNTS', 'JNTM', 'MJCT', 'BVRI', 'BVRW', 'INDU', 'CVSR', 'MRCW', 'MRCE', 'GURU', 'BREW',
+                        'GNIT', 'MECS', 'MLRD', 'MREC', 'CHET', 'VBEC', 'KUWL', 'VMTW', 'NGIT', 'ACEG', 'SRHP', 'CMRG',
+                        'ANRH', 'VBIT', 'TCEK', 'CASR', 'CMRM', 'MLID', 'KTKM', 'METH', 'SDEW', 'KUEWSF', 'MHVR',
+                        'STLW', 'HITM', 'JBIT', 'MLRS', 'MRTN', 'PRIW', 'JMTS', 'TKRC', 'WESL', 'NAWB', 'JNPASF',
+                        'MGUNSF', 'MRIT', 'SMSK', 'VGNT', 'CMRN', 'BIET', 'ISLC', 'VAGE', 'NNRG', 'KCEA', 'MRET',
+                        'MNRP', 'VGWL', 'KDDW', 'VGSE', 'NREC', 'MREW', 'NOVH', 'CFSR', 'SRYS', 'DRKC', 'SISG', 'SBIT',
+                        'KUCESF', 'VITS', 'SRIW', 'SPEC', 'SAIS', 'BITN', 'SMIC', 'GRCP', 'AKIT', 'PETW', 'JPNE',
+                        'KGRH', 'AURP', 'MMTZ', 'CITS', 'SPHN', 'SWET', 'ANRK', 'CHTN', 'DCET', 'JAYA', 'PALV', 'CJIT',
+                        'VVKN', 'CHTS', 'KMTS', 'KPRT', 'AVIH', 'KITW', 'SDES', 'VKSP', 'IITT', 'SMCD', 'AITH', 'MREM',
+                        'RITW', 'TKEM', 'AARM', 'CDTK', 'SVES', 'BSKR', 'VRKW', 'GNPT', 'GLOB', 'SIEI', 'AVNI', 'INDI',
+                        'KUCP', 'HOLY', 'BOSE', 'JMTK', 'KLRT', 'JOGI', 'KNRR', 'MOTK', 'MNRT', 'GATE', 'BSGP', 'NRCM',
+                        'SMED', 'SNTI', 'LRDS', 'AURG', 'VJYA', 'TPCE', 'DRKI', 'MGHA', 'ELEN', 'BRIL', 'MINA', 'MTEC',
+                        'AURH', 'ARJN', 'VJYH', 'VREC', 'SDGI', 'SUUP', 'VCET', 'TALP', 'WITS', 'TCTK', 'BRIG', 'BOMA',
+                        'SWIT', 'ASRA', 'DSOP', 'MRCP', 'AIZA', 'SVSE', 'SCET', 'TMLP', 'TRRC', 'BNPW', 'PLMU', 'MLRP',
+                        'VISA', 'SVHU', 'SANA', 'CMRP', 'VPRG', 'NGMA', 'BPCP', 'TKRP', 'NIET', 'VCOP', 'JANG', 'PURD',
+                        'MRPC', 'SDCP', 'SPKG', 'SNVM', 'GLND', 'VCPN', 'KHMP', 'VITH', 'AVHP', 'GCPK', 'MESP', 'DIPS',
+                        'VAGP', 'VGSP', 'SANP', 'ANWP', 'VSNU', 'MIPM', 'SCOP']
 
-COLLEGE = {college_code[i]: (i+1, college[i]) for i in range(len(branch_code))}
+sorted_branch_codes = ['CSE', 'CSM', 'EEE', 'ECE', 'CIC', 'AID', 'PHM', 'CHE', 'MEC', 'INF', 'CSD', 'CSC', 'MIN', 'CSO',
+                       'CIV', 'CSB', 'CSI', 'BME', 'MMS', 'ANE', 'CST', 'MTE', 'EIE', 'AI', 'MET', 'ECM', 'AGR', 'BIO',
+                       'MCT', 'CSN', 'FPT', 'MMT', 'ETM', 'PLG', 'DTD', 'TEX', 'FDS', 'AUT', 'ECI', 'DRG', 'CME', 'CSW',
+                       'ITE', 'FSP', 'PHD', 'PHE', 'IPE']
 
+import pandas as pd
+
+# Load CSV data
+data = pd.read_csv("tseamcet.csv")  # Replace with your CSV file path
+
+lowest_ranks = data.groupby('branch_code')['rank'].min().to_dict()
+
+branch_rank_list = [[code, lowest_ranks.get(code, None)] for code in branch_code]
+branch_rank_list.sort(key=lambda x: x[1])
+
+# print(branch_rank_list)
+
+# List to store unique branch codes in insertion order
+sorted_branch_codes = []
+# Set to track seen branch codes for uniqueness
+seen_branch_codes = set()
+
+# Iterate through college_rank_list and add unique branch codes in order
+for val in branch_rank_list:
+    if val[0] not in seen_branch_codes:
+        sorted_branch_codes.append(val[0])
+        seen_branch_codes.add(val[0])
+
+# print(sorted_branch_codes)
+
+# print(branch_code)
+
+
+# BRANCH = {branch_code[i]: (i+1, branch[i]) for i in range(len(branch_code))}
+# Initialize the BRANCH dictionary
+
+# BRANCH = {}
+# for index in range(len(sorted_branch_codes)):
+#     # print(code)
+#     code = sorted_branch_codes[index]
+#     for i in range(len(sorted_branch_codes)):
+#         # print(code + " " + branch_code[i])
+#         if code == branch_code[i]: BRANCH[code] = (index+1, branch[i])
+# COLLEGE = {college_code[i]: (i + 1, college[i]) for i in range(len(branch_code))}
+
+
+BRANCH = {'CSE': (1, 'COMPUTER SCIENCE AND ENGINEERING'), 'CSM': (2, 'COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)'), 'EEE': (3, 'ELECTRICAL AND ELECTRONICS ENGINEERING'), 'ECE': (4, 'ELECTRONICS AND COMMUNICATION ENGINEERING'), 'CIC': (5, 'CSE (IoT AND CYBER SECURITY INCLUDING BLOCK CHAIN TECHNOLOGY)'), 'AID': (6, 'ARTIFICIAL INTELLIGENCE AND DATA SCIENCE'), 'PHM': (7, 'B. PHARMACY (M.P.C. STREAM)'), 'CHE': (8, 'CHEMICAL ENGINEERING'), 'MEC': (9, 'MECHANICAL ENGINEERING'), 'INF': (10, 'INFORMATION TECHNOLOGY'), 'CSD': (11, 'COMPUTER SCIENCE AND ENGINEERING (DATA SCIENCE)'), 'CSC': (12, 'COMPUTER SCIENCE AND ENGINEERING (CYBER SECURITY)'), 'MIN': (13, 'MINING ENGINEERING'), 'CSO': (14, 'COMPUTER SCIENCE AND ENGINEERING (IOT)'), 'CIV': (15, 'CIVIL ENGINEERING'), 'CSB': (16, 'COMPUTER SCIENCE AND BUSINESS SYSTEM'), 'CSI': (17, 'COMPUTER SCIENCE AND INFORMATION TECHNOLOGY'), 'BME': (18, 'BIO-MEDICAL ENGINEERING'), 'MMS': (19, 'BTECH MECHANICAL WITH MTECH MANUFACTURING SYSTEMS'), 'ANE': (20, 'AERONAUTICAL ENGINEERING'), 'CST': (21, 'COMPUTER SCIENCE AND TECHNOLOGY'), 'MTE': (22, 'BTECH MECHANICAL WITH MTECH THERMAL ENGG'), 'EIE': (23, 'ELECTRONICS AND INSTRUMENTATION ENGINEERING'), 'AI': (24, 'ARTIFICIAL INTELLIGENCE'), 'MET': (25, 'METALLURGICAL ENGINEERING'), 'ECM': (26, 'ELECTRONICS AND COMPUTER ENGINEERING'), 'AGR': (27, 'AGRICULTURAL ENGINEERING'), 'BIO': (28, 'BIO-TECHNOLOGY'), 'MCT': (29, 'MECHANICAL (MECHTRONICS) ENGINEERING'), 'CSN': (30, 'COMPUTER SCIENCE & ENGINEERING (NETWORKS)'), 'FPT': (31, 'FOOD PROCESSING TECHNOLOGY'), 'MMT': (32, 'METALLURGY AND MATERIAL ENGINEERING'), 'ETM': (33, 'ELECTRONICS AND TELEMATICS'), 'PLG': (34, 'PLANNING'), 'DTD': (35, 'DIGITAL TECHNIQUES FOR DESIGN AND PLANNING'), 'TEX': (36, 'TEXTILE TECHNOLOGY'), 'FDS': (37, 'FOOD SCIENCE'), 'AUT': (38, 'AUTOMOBILE ENGINEERING'), 'ECI': (39, 'ELECTRONICS COMMUNICATION AND INSTRUMENTATION ENGINEERING'), 'DRG': (40, 'DAIRYING'), 'CME': (41, 'COMPUTER ENGINEERING'), 'CSW': (42, 'COMPUTER ENGINEERING(SOFTWARE ENGINEERING)'), 'ITE': (43, 'INFORMATION TECHNOLOGY AND ENGINEERING'), 'FSP': (44, 'FACILITIES AND SERVICES PLANNING'), 'PHD': (45, 'PHARM - D (M.P.C. STREAM)'), 'PHE': (46, 'PHARMACEUTICAL ENGINEERING'), 'IPE': (47, 'INDUSTRIAL PRODUCTION ENGINEERING')}
+COLLEGE = {'AVHP': (1, 'AVHP  -  AVANTHI INST OF PHARMSCI, HAYATHNAGAR'), 'AIZA': (2, 'AIZA  -  AIZZA COLLEGE OF ENGG AND TECHNOLOGY, MANCHERIAL'), 'ANRH': (3, 'ANRH  -  ANURAG COLLEGE OF ENGINEERING, GHTKESAR'), 'AVIH': (4, 'AVIH  -  AVANTHI INST OF ENGG AND TECHNOLOGY, HAYATHNAGAR'), 'ANRK': (5, 'ANRK  -  ANURAG ENGINEERING COLLGE, KODAD'), 'ASRA': (6, 'ASRA  -  AVANTHIS SCIENTIFIC TECH AND RESEARCH ACADEMY, HAYATHNAGAR'), 'AURG': (7, 'AURG  -  AURORAS SCIENTIFIC AND TECHNOLOGICAL INSTITUTE, GHATKESAR'), 'AITH': (8, 'AITH  -  ANNAMACHARYA INST OF TECHNOLOGY AND SCI, HAYATHNAGAR'), 'AKIT': (9, 'AKIT  -  ABDULKALAM INST OF TECHNOLOGY AND SCI, KOTHAGUDEM'), 'AURH': (10, 'AURH  -  RAMAPPA ENGINEERING COLLEGE, HANAMKONDA'), 'ANWP': (11, 'ANWP  -  ANWAR-ULOOM COLLEGE  OF PHARMACY, HYDERABAD'), 'ARJN': (12, 'ARJN  -  ARJUN COLLEGE OF TECHNOLOGY AND SCIENCE, BATASINGARAM'), 'ACEG': (13, 'ACEG  -  A C E ENGINEERING COLLEGE (AUTONOMOUS), GHATKESAR'), 'BITN': (14, 'BITN  -  BALAJI INSTITUTE OF TECHNOLOGY AND SCI, NARSAMPET'), 'AVNI': (15, 'AVNI  -  AVN INST OF ENGG TECHNOLOGY, IBRAHIMPATAN'), 'AURP': (16, 'AURP  -  AURORAS TECHNOLOGICAL AND  RESEARCH INSTITUTE, PARVATHAPUR'), 'BIET': (17, 'BIET  -  BHARAT INSTITUTE OF ENGG AND TECHNOLOGY, IBRAHIMPATNAM'), 'KUCESF': (18, 'KUCESF  -  K U COLLEGE OF ENGG  KOTHAGUDEM, KOTHAGUDEM'), 'MESP': (19, 'MESP  -  MESCO COLLEGE OF PHARMACY, MUSTAIDPURA'), 'WESL': (20, 'WESL  -  CSI WESLEY INST OF TECHNOLOGY AND SCIENCES, SECUNDERABAD'), 'GPRP': (21, 'GPRP  -  G P R COLLEGE OF PHARMACY, MEHDIPATNAM'), 'SBIT': (22, 'SBIT  -  SWARNA BHARATHI INSTITUTE OF SCI AND TECHNOLOGY, KHAMMAM'), 'JANG': (23, 'JANG  -  JANGOAN INSTITUTE OF PHARMACEUTICAL SCIS, JANGAON'), 'SNVM': (24, 'SNVM  -  S N VANITHA PHARMACY MAHA VIDYALAYA, TARNAKA'), 'KHMP': (25, 'KHMP  -  KHAMMAM COLLEGE OF PHARMACY, KHAMMAM'), 'JMTS': (26, 'JMTS  -  JYOTHISHMATHI INSTITUTE OF TECHNOLOGY AND SCI, KARIMNAGAR'), 'OUCT': (27, 'OUCT  -  O U COLLEGE OF TECH  HYDERABAD, HYDERABAD'), 'DIPS': (28, 'DIPS  -  DHANVANTHARI INST OF PHARM SCI, KOTHAGUDEM'), 'AARM': (29, 'AARM  -  AAR MAHAVEER ENGINEERING COLLEGE, BANDLAGUDA'), 'CHTS': (30, 'CHTS  -  SREE CHAITANYA INST OF TECHNOLOGY SCIENCES, KARIMNAGAR'), 'BNPW': (31, 'BNPW  -  BOJJAM NARASIMHULU PHARM COLL FOR WOMEN, SAIDABAD'), 'SUUP': (32, 'SUUP  -  SULTAN UL-ULOOM COLLEGE OF PHARMACY, BANJARA HILLS'), 'KUCE': (33, 'KUCE  -  K U COLLEGE OF ENGG  KOTHAGUDEM, KOTHAGUDEM'), 'VASV': (34, 'VASV  -  VASAVI COLLEGE OF ENGINEERING, HYDERABAD'), 'METH': (35, 'METH  -  METHODIST COLLEGE OF ENGINEERING AND TECHNOLOGY, ABIDS'), 'NAWB': (36, 'NAWB  -  NAWAB SHAH ALAM KHAN COLL OF ENGG AND TECH, NEW MALAKPET'), 'DSOP': (37, 'DSOP  -  DECCAN SCHOOL OF PHARMACY, NAMPALLY'), 'SVIT': (38, 'SVIT  -  SWAMI VIVEKANANDA INST OF TECHNOLOGY, SECUNDERABAD'), 'TCTK': (39, 'TCTK  -  TRINITY COLLEGE OF ENGINEERING AND TECHNOLOGY, KARIMNAGAR'), 'KMIT': (40, 'KMIT  -  KESHAV MEMORIAL INST OF TECHNOLOGY, NARAYANAGUDA'), 'SWET': (41, 'SWET  -  SHADHAN WOMENS COLL OF ENGG AND TECHNOLOGY, KHAIRTABAD'), 'MJCT': (42, 'MJCT  -  M J COLLEGE OF ENGINEERING AND TECHNOLOGY, BANJARA HILLS'), 'MMTZ': (43, 'MMTZ  -  MUMTAZ COLL OF ENGG TECHNOLOGY, HYDERABAD'), 'MOTK': (44, 'MOTK  -  MOTHER TERESA INSTITUTE OF SCI AND TECHNOLOGY, SATHUPALLY'), 'SAIS': (45, 'SAIS  -  SAI SPURTI INSTITUTE OF TECHNOLOGY, SATHUPALLY'), 'CJIT': (46, 'CJIT  -  CHRISTU JYOTHI INSTITUTE OF TECHNOLOGY AND SCI, JANGAON'), 'BOMA': (47, 'BOMA  -  BOMMA INST OF TECHNOLOGY AND SCI, KHAMMAM')}
+
+
+# print(BRANCH)
+# print(COLLEGE)
