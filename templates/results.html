@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .results-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .results-table th, .results-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .results-table th {
+            background-color: #0073e6;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .results-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .results-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .results-table td {
+            font-size: 0.95rem;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 150px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+<h1>Predicted Top Colleges</h1>
+<table class="results-table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>College Code</th>
+        <th>College</th>
+        <th>Students per Class</th>
+        <th>Fee</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for college in top_colleges %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ college.college_code }}</td>
+            <td>{{ college.college }}</td>
+            <td>{{ college.students_per_class }}</td>
+            <td>₹{{ college.fee }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+<a href="{{ url_for('home') }}" class="back-button">Back to Form</a>
+</body>
+</html>

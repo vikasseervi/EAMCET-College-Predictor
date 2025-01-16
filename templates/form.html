@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>College Predictor</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .header {
+      background-color: #0073e6;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    .header p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+    }
+    .content {
+      padding: 20px;
+      max-width: 600px;
+      margin: 20px auto 0;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #555;
+    }
+    input, select, button {
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    button {
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1>College Predictor</h1>
+  <p>Find the best colleges based on your rank, gender, caste, and branch preference.</p>
+</div>
+
+<div class="content">
+  <h1 style="color: black;">College Predictor Form</h1>
+  <form id="predict-form" action="/results" method="post">
+    <label for="rank">Rank:</label>
+    <input type="number" id="rank" name="rank" min="1" required>
+    <span class="error" id="rank-error"></span>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select Gender</option>
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+    </select>
+
+    <label for="caste">Caste:</label>
+    <select id="caste" name="caste" required>
+      <option value="">Loading options...</option>
+    </select>
+
+    <label for="branch_code">Branch Code:</label>
+    <select id="branch_code" name="branch_code" required>
+      <option value="">Loading options...</option>
+    </select>
+
+    <button type="submit" id="submit-button">Predict</button>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('predict-form');
+    const rankInput = document.getElementById('rank');
+    const rankError = document.getElementById('rank-error');
+    const casteSelect = document.getElementById('caste');
+    const branchSelect = document.getElementById('branch_code');
+    const submitButton = document.getElementById('submit-button');
+
+    // Fetch dynamic options from the server
+    fetch('/api/options')
+      .then(response => response.json())
+      .then(data => {
+        // Populate caste options
+        casteSelect.innerHTML = data.castes.map(caste => `<option value="${caste}">${caste}</option>`).join('');
+
+        // Populate branch options
+        branchSelect.innerHTML = data.branches.map(branch => `<option value="${branch}">${branch}</option>`).join('');
+      })
+      .catch(err => {
+        console.error('Error fetching options:', err);
+      });
+
+    // Real-time rank validation
+    rankInput.addEventListener('input', () => {
+      const rankValue = parseInt(rankInput.value, 10);
+      if (isNaN(rankValue) || rankValue <= 0) {
+        rankError.textContent = 'Please enter a valid positive rank.';
+        submitButton.disabled = true;
+      } else {
+        rankError.textContent = '';
+        submitButton.disabled = false;
+      }
+    });
+
+    // Prevent form submission if options are not loaded
+    form.addEventListener('submit', (e) => {
+      if (casteSelect.value === '' || branchSelect.value === '') {
+        alert('Please wait for the options to load.');
+        e.preventDefault();
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* General Reset */
+body, h1, h2, table, th, td, img, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0073e6;
+    padding: 20px;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 15px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Results Container */
+.results-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.results-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Table Styles */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.results-table thead {
+    background-color: #0073e6;
+    color: white;
+}
+
+.results-table th, .results-table td {
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.results-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.results-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.results-table th {
+    font-size: 1rem;
+}
+
+.results-table td {
+    font-size: 0.95rem;
+}
+
+/* Back Button */
+.back-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #0073e6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.back-button:hover {
+    background-color: #005bb5;
+    text-decoration: none;
+}
