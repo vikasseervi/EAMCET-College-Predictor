@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Visualization</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: black;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #0073e6;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* Content Styles */
+        .content {
+            padding: 30px;
+            max-width: 800px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Horizontal Layout for Label and Dropdown */
+        .form-group {
+            display: flex;
+            align-items: center; /* Vertically center align label and dropdown */
+            gap: 10px; /* Space between label and dropdown */
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            white-space: nowrap; /* Prevent label from wrapping */
+        }
+
+        select, button {
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.1);
+            color: black; /* Changed to black for better visibility */
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        select:focus, button:focus {
+            outline: none;
+            border-color: #0073e6;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        button {
+            background: linear-gradient(135deg, #0073e6, #005bb5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #005bb5, #004494);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Flex Container for Feature vs Target Dropdowns */
+        .flex-container {
+            display: flex;
+            gap: 10px; /* Space between dropdowns */
+        }
+
+        .flex-container > div {
+            flex: 1; /* Equal width for both dropdowns */
+        }
+
+        /* Increase width of Select2 dropdowns */
+        .select2-container {
+            width: 100% !important; /* Full width of the container */
+            max-width: 400px; /* Set a maximum width */
+        }
+
+        /* Image Styles */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .content {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            select, button {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .flex-container {
+                flex-direction: column; /* Stack dropdowns vertically on small screens */
+            }
+
+            .form-group {
+                flex-direction: column; /* Stack label and dropdown vertically on small screens */
+                align-items: flex-start; /* Align items to the start */
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+    <h1>Dynamic Data Visualization</h1>
+</div>
+
+<!-- Content -->
+<div class="content">
+    <form id="visualization-form" action="/visualize" method="post">
+        <!-- Plot Type Selection -->
+        <div class="form-group">
+            <label for="plot_type">Select Plot Type:</label>
+            <select id="plot_type" name="plot_type" required>
+                <option value="" disabled selected>Select Plot Type</option>
+                <option value="category_distribution">Category Distribution</option>
+                <option value="feature_vs_target">Feature vs Target</option>
+            </select>
+        </div>
+
+        <!-- Column Selection -->
+        <div id="column_selection" class="form-group">
+            <label for="column">Select Feature:</label>
+            <select id="column" name="column" required>
+            <option value="" disabled selected>Select Feature</option>
+                {% for column in columns %}
+                <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Feature vs Target Dropdowns -->
+        <div id="feature_vs_target_selection" style="display: none;">
+            <div class="flex-container">
+                <div class="form-group">
+                    <label for="feature_column">Select Feature Column:</label>
+                    <select id="feature_column" name="feature_column" required>
+                        <option value="" disabled selected>Select Feature Column</option>
+                        {% for column in columns %}
+                        <option value="{{ column }}">{{ column }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="target_column">Select Target Column:</label>
+                    <select id="target_column" name="target_column" required>
+                    <option value="" disabled selected>Select Target Column</option>
+                        {% for column in columns %}
+                        <option value="{{ column }}">{{ column }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit">Generate Plot</button>
+    </form>
+
+    {% if plot_filename %}
+    <h2>Generated Plot</h2>
+    <img src="{{ url_for('serve_plot', filename=plot_filename) }}" alt="Plot">
+    {% endif %}
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+    // Initialize Select2 dropdowns
+    $('#plot_type').select2({
+        width: '100%', // Full width of the container
+        placeholder: 'Select Plot Type' // Placeholder for plot type dropdown
+    });
+    $('#column').select2({
+        width: '100%', // Full width of the container
+        placeholder: 'Select Feature' // Placeholder for feature dropdown
+    });
+    $('#feature_column').select2({
+        width: '100%', // Full width of the container
+        placeholder: 'Select Feature Column' // Placeholder for feature column dropdown
+    });
+    $('#target_column').select2({
+        width: '100%', // Full width of the container
+        placeholder: 'Select Target Column' // Placeholder for target column dropdown
+    });
+
+    // Show/hide dropdowns based on plot type
+    $('#plot_type').change(function() {
+        if ($(this).val() === 'feature_vs_target') {
+            $('#column_selection').hide(); // Hide column dropdown
+            $('#column').prop('required', false); // Remove required
+            $('#feature_vs_target_selection').show(); // Show feature vs target
+            $('#feature_column, #target_column').prop('required', true); // Set required
+        } else {
+            $('#column_selection').show(); // Show column dropdown
+            $('#column').prop('required', true); // Set required
+            $('#feature_vs_target_selection').hide(); // Hide feature vs target
+            $('#feature_column, #target_column').prop('required', false); // Remove required
+        }
+    });
+
+
+    // Debugging: Log form data before submission
+    $('#visualization-form').on('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission for debugging
+
+        // Log form data
+        const formData = new FormData(this);
+        for (const [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+
+        // Submit the form programmatically
+        this.submit();
+    });
+});
+</script>
+</body>
+</html>

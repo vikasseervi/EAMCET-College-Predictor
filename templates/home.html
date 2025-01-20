@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | EAMCET Tools</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(0, 115, 230, 0.9); /* Semi-transparent blue */
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Main Container for Vertical Sections */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 140px); /* Adjust height to account for header */
+        }
+
+        .main-container p {
+            font-size: 1.1rem;
+        }
+
+        /* Vertical Sections */
+        .section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Thin Vertical Line */
+        .section:first-child::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Button Styles */
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            color: white;
+            background: linear-gradient(135deg, #0073e6, #005bb5);
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #005bb5, #004494);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .section {
+                padding: 40px 20px;
+            }
+
+            .section:first-child::after {
+                display: none;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+    <h1>College Predictor</h1>
+    <p>Find the best colleges based on your rank, gender, caste, and branch preference.</p>
+</div>
+
+<div class="main-container">
+    <!-- First Vertical Section - College Predictor -->
+    <div class="section" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../static/pics/college-building.jpg') no-repeat center center; background-size: cover; background-position: top;">
+        <h1>College Predictor</h1>
+        <p>Find the best colleges based on your rank, gender, caste, and branch preference.</p>
+        <a href="/predict" class="button">Get Started</a>
+    </div>
+
+    <!-- Second Vertical Section - Data Visualizer -->
+    <div class="section" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../static/pics/analytics-dashboard.jpg') no-repeat center center; background-size: cover; background-position: top;">
+        <h1>Data Visualizer</h1>
+        <p>Explore and analyze data trends for better decision-making.</p>
+        <a href="/visualization" class="button">Explore Data</a>
+    </div>
+</div>
+</body>
+</html>
